@@ -1,0 +1,548 @@
+/* =========================
+   RESET & BASE
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg,#fef6fb,#f3f8ff);
+    color: #333;
+    line-height: 1.6;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: #2181ff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #444;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: #ffffff;
+    color: #000000;
+}
+
+/* =========================
+   HERO (หน้าแรก)
+========================= */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(135deg,#79c1fc,#79c1fc);
+    color: white;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn-hero,
+.cute-btn {
+    display: inline-block;
+    text-decoration: none;
+    background: linear-gradient(135deg,#ff6969,#ff4545);
+    color: white;
+    font-weight: 600;
+    padding: 12px 26px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-hero:hover,
+.cute-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* =========================
+   CARD / LIST
+========================= */
+.places,
+.food-section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.cards,
+.food-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.card,
+.food-card {
+    background: white;
+    width: 300px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+    transition: 0.3s;
+}
+
+.card:hover,
+.food-card:hover {
+    transform: translateY(-8px);
+}
+
+.card img,
+.food-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card h3,
+.food-card h3 {
+    margin: 15px;
+}
+
+.card p,
+.food-card p {
+    margin: 0 15px 15px;
+    font-size: 0.95rem;
+}
+
+.rating {
+    color: #ffb703;
+    font-weight: 600;
+}
+
+.review-box {
+    background: #fff0f6;
+    margin: 0 15px 15px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
+
+/* =========================
+   CENTER PAGE (ฟอร์ม / แผนที่)
+========================= */
+.center-page {
+    min-height: calc(100vh - 140px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.form-card,
+.form-center {
+    background: white;
+    width: 100%;
+    max-width: 900px;
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    text-align: center;
+}
+
+/* =========================
+   FORM
+========================= */
+.form-center input,
+.form-center select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+
+.form-center input:focus,
+.form-center select:focus {
+    border-color: #414141;
+    outline: none;
+}
+
+/* =========================
+   MAP
+========================= */
+iframe {
+    width: 100%;
+    height: 420px;
+    border: none;
+    border-radius: 18px;
+    margin-top: 20px;
+}
+
+/* =========================
+   MODAL
+========================= */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    max-width: 500px;
+    width: 90%;
+}
+
+.close {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+    background: #2181ff;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .cards,
+    .food-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    iframe {
+        height: 300px;
+    }
+}
+.calculator {
+    min-height: calc(100vh - 140px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.slider {
+    overflow: hidden;
+    width: 100%;
+}
+
+.slides {
+    display: flex;
+    gap: 30px;
+}
+
+@keyframes slide {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+/* ===== Popup Notify ===== */
+.notify {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.notify.hidden {
+    display: none;
+}
+
+.notify-box {
+    background: #fff;
+    padding: 25px 35px;
+    border-radius: 20px;
+    text-align: center;
+    animation: pop 0.3s ease;
+    font-family: 'Kanit', sans-serif;
+}
+
+.notify-icon {
+    font-size: 60px;
+    margin-bottom: 10px;
+    animation: bounce 0.6s ease;
+}
+
+.notify-box button {
+    margin-top: 15px;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 20px;
+    background: #ff8fab;
+    color: white;
+    cursor: pointer;
+}
+
+@keyframes pop {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes bounce {
+    0% { transform: scale(0); }
+    60% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+.hero-slider {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+    margin: 20px;
+    border-radius: 20px;
+}
+
+/* รูป */
+.slides {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease;
+}
+
+.slides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* ปุ่ม */
+.slide-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border: none;
+    font-size: 32px;
+    padding: 10px 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 50;   /* ⭐ สำคัญ */
+}
+
+.slide-btn.left {
+    left: 15px;
+}
+
+.slide-btn.right {
+    right: 15px;
+}
+
+.slide-btn:hover {
+    background: rgba(0,0,0,0.85);
+}
+
+/* ข้อความ */
+.hero-text {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 15px;
+    text-align: center;
+    z-index: 20;
+}
+
+/* จุดกลม */
+.dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 30;
+}
+
+.dots span {
+    width: 12px;
+    height: 12px;
+    background: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dots span.active {
+    background: #ff6fa5;
+}
+/* ===== จัดหน้า calculator ให้อยู่กลาง ===== */
+.calculator {
+    max-width: 450px;
+    margin: 80px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    text-align: center;
+}
+
+/* หัวข้อ */
+.calculator h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* ช่องกรอก */
+.calculator input,
+.calculator select {
+    width: 100%;
+    padding: 10px 12px;
+    margin: 8px 0;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+/* ปุ่ม */
+.calculator button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 999px;
+    border: none;
+    background: #ff5b5b;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.calculator button:hover {
+    background: #e04848;
+}
+
+/* กล่องรายการที่เลือก */
+#selected-list {
+    margin-top: 15px;
+    padding: 10px;
+    background: #f5f7ff;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+/* กล่องผลลัพธ์ */
+#result {
+    margin-top: 15px;
+    padding: 12px;
+    background: #eef6ff;
+    border-radius: 12px;
+    font-size: 15px;
+}
+/* ===== Popup Notify Center ===== */
+.notify {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.notify.hidden {
+    display: none;
+}
+
+.notify-box {
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 18px;
+    text-align: center;
+    width: 320px;
+    animation: popupScale .3s ease;
+    box-shadow: 0 15px 40px rgba(0,0,0,.25);
+}
+
+.notify-icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.notify-box p {
+    font-size: 15px;
+    margin: 10px 0 15px;
+}
+
+.notify-box button {
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    background: #ff6f91;
+    color: #fff;
+    font-family: 'Kanit', sans-serif;
+}
+
+/* animation */
+@keyframes popupScale {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

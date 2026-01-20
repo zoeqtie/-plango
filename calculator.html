@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำนวณค่าใช้จ่ายทริป</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">🌏Plan go</div>
+        <ul class="nav-links">
+            <li><a href="index.html">สถานที่ท่องเที่ยว</a></li>
+            <li><a href="map.html">แผนที่</a></li>
+            <li><a href="food.html">ร้านอาหาร</a></li>
+            <li><a href="hotel.html">โรงแรม</a></li>
+            <li><a href="calculator.html">คำนวณค่าใช้จ่าย</a></li>
+        </ul>
+    </nav>
+
+   <section class="calculator center-page">
+    <div class="form-center">
+    <h2>📊 คำนวณค่าใช้จ่ายทริป</h2>
+<!-- แสดงสิ่งที่เลือกมาจาก card -->
+<div id="selected-info" style="margin-bottom:15px; font-size:14px;"></div>
+
+    <label>จำนวนวัน</label>
+    <input type="number" id="days" value="0">
+
+    <label>จำนวนคน</label>
+    <input type="number" id="people" value="0">
+
+    <label>🚗 วิธีเดินทาง</label>
+<select id="transport">
+    <option value="walk">🚶 เดิน</option>
+    <option value="bts">🚆 รถไฟฟ้า BTS</option>
+    <option value="bus">🚌 รถเมล์</option>
+    <option value="taxi">🚕 แท็กซี่</option>
+</select>
+<div id="selected-list"></div>
+
+<button class="btn-hero" onclick="calculateTrip()">คำนวณ</button>
+
+
+
+    <div id="result"></div>
+</div>
+<div id="selected-list" class="result-box"></div>
+
+
+
+
+</section>
+
+
+    <footer>
+        <p>&copy; Plan Go💖</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+function calculateTrip() {
+    const days = Number(document.getElementById("days").value);
+    const people = Number(document.getElementById("people").value);
+    const transportType = document.getElementById("transport").value;
+
+    const trip = JSON.parse(localStorage.getItem("trip")) || { food: [], hotel: [] };
+
+    let foodCost = 0;
+    let hotelCost = 0;
+    let transportCost = 0;
+
+    trip.food.forEach(f => {
+        foodCost += f.price * people * days;
+        if (f.transport && f.transport[transportType]) {
+            transportCost += f.transport[transportType] * people;
+        }
+    });
+
+    trip.hotel.forEach(h => {
+        hotelCost += h.price * days;
+        if (h.transport && h.transport[transportType]) {
+            transportCost += h.transport[transportType];
+        }
+    });
+
+    const total = foodCost + hotelCost + transportCost;
+
+    document.getElementById("result").innerHTML = `
+        🍜 อาหาร: ${foodCost.toLocaleString()} บาท<br>
+        🏨 โรงแรม: ${hotelCost.toLocaleString()} บาท<br>
+        🚗 เดินทาง: ${transportCost.toLocaleString()} บาท<br>
+        <hr>
+        💰 <strong>รวมทั้งหมด ${total.toLocaleString()} บาท</strong>
+    `;
+
+    // ⭐⭐ ตรงนี้แหละที่ขาด ⭐⭐
+    showNotify(`
+        <h3>📊 สรุปค่าใช้จ่าย</h3>
+        🍜 อาหาร: ${foodCost.toLocaleString()} บาท<br>
+        🏨 โรงแรม: ${hotelCost.toLocaleString()} บาท<br>
+        🚗 เดินทาง: ${transportCost.toLocaleString()} บาท<br>
+        <hr>
+        💰 <strong>รวมทั้งหมด ${total.toLocaleString()} บาท</strong>
+    `, "success", true);
+}
+    </script>
+<div id="notify" class="notify hidden">
+    <div class="notify-box">
+        <div id="notify-icon" class="notify-icon">✔</div>
+        <p id="notify-text">แจ้งเตือน</p>
+        <button onclick="closeNotify()">ปิด</button>
+    </div>
+</div>
+
+</body>
+</html>
