@@ -88,14 +88,6 @@ function calculateTrip() {
 
     const total = foodCost + hotelCost + transportCost;
 
-    document.getElementById("result").innerHTML = `
-        🍜 อาหาร: ${foodCost.toLocaleString()} บาท<br>
-        🏨 โรงแรม: ${hotelCost.toLocaleString()} บาท<br>
-        🚗 เดินทาง: ${transportCost.toLocaleString()} บาท<br>
-        <hr>
-        💰 <strong>รวมทั้งหมด ${total.toLocaleString()} บาท</strong>
-    `;
-
     // ⭐⭐ ตรงนี้แหละที่ขาด ⭐⭐
     showNotify(`
         <h3>📊 สรุปค่าใช้จ่าย</h3>
@@ -117,3 +109,4 @@ function calculateTrip() {
 
 </body>
 </html>
+
